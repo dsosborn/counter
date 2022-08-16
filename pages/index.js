@@ -1,44 +1,46 @@
-import React, {useState, useEffect} from "react"
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import axios from "axios"
+import React, { useState, useEffect } from "react";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import axios from "axios";
 
 export default function Home() {
   const [count, setCount] = useState("—");
   const getCount = () => {
-    axios.get('/api/count')
-    .then(function (response) {
-      // handle success
-      console.log(response);
-      setCount(response.data.count)
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });
-  }
+    axios
+      .get("/api/count")
+      .then(function (response) {
+        // handle success
+        console.log(response);
+        setCount(response.data.count);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  };
   const upTick = () => {
-    axios.post('/api/count')
-    .then(function (response) {
-      // handle success
-      console.log(response);
-      setCount(response.data.count)
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });
-  }
-  useEffect(()=>{
+    axios
+      .post("/api/count")
+      .then(function (response) {
+        // handle success
+        console.log(response);
+        setCount(response.data.count);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  };
+  useEffect(() => {
     getCount();
-  },[])
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -48,43 +50,28 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          The count is {count}
-        </h1>
+        <h1 className={styles.title}>The count is {count}</h1>
 
         <p className={styles.description}>
-         <button style={{padding:16, letterSpacing: "0.04em", height: 120, width: 120, border: 0, cursor: "pointer", color:"white", borderRadius:60, backgroundColor:"darkslategray", fontSize:40, fontWeight:800 }} onClick={upTick}>+1</button>
+          <button
+            style={{
+              padding: 16,
+              letterSpacing: "0.04em",
+              height: 120,
+              width: 120,
+              border: 0,
+              cursor: "pointer",
+              color: "white",
+              borderRadius: 60,
+              backgroundColor: "darkslategray",
+              fontSize: 40,
+              fontWeight: 800,
+            }}
+            onClick={upTick}
+          >
+            +1
+          </button>
         </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
       </main>
 
       <footer className={styles.footer}>
@@ -93,12 +80,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
